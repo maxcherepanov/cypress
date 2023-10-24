@@ -1,8 +1,5 @@
 ///<reference types="cypress" />
 
-
-
-
 describe(`Context:my fisrt cypress test ever`,() => {
     before(()=> {
     //runs once before all test cases in this describe block
@@ -21,8 +18,21 @@ afterEach(()=> {
 
     //runs after each test case (method)
 })
-it(`opening a web application`, ()=> {
+it.only(`opening a web application`, ()=> {
     cy.visit(`/registration_form`);
+    // cy.get('.nav-link').click();
 
+})
+
+
+it.skip(`Test 2`, ()=> {
+
+    expect(false).to.equal(false);
+})
+
+
+it(`Test 3`, ()=> {
+
+    expect(false).not.to.equal(true);
 })
 })
