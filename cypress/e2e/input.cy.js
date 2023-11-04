@@ -1,9 +1,5 @@
 /// <reference types="cypress" />
 
-const { log } = require("console");
-const { verify } = require("crypto");
-
-
 describe(`input flow`, () => {
   beforeEach(() => {
     cy.clearCookies();
@@ -42,10 +38,8 @@ describe(`input flow`, () => {
   it(`test registration form language checkboxes`, () => {
     cy.get(`input[type=checkbox]`).then((box) => {
       for (let i = 0; i < box.length; i++) {
-
-        if(i==2) {
-
-            cy.wrap(box).eq(i).should('have.value', 'javascript');
+        if (i === 2) {
+          cy.wrap(box).eq(i).should('have.value', 'javascript');
         }
 
         cy.wrap(box)
@@ -60,30 +54,19 @@ describe(`input flow`, () => {
     });
   });
 
-
   it.only(`dropdown test`, () => {
-
-
-
-cy.fixture('departments').then(dep => {
-
-    cy.get(`select[name=department] > option`).each((option, i) => {
-
-        if(i > 3) {
-            return false;
+    cy.fixture('departments').then((dep) => {
+      cy.get(`select[name=department] > option`).each((option, i) => {
+        if (i > 3) {
+          return false;
         }
 
+        // console.log(`${i}: ${option.text()}`);
 
-console.log(`${i}: ${option.text()}`);
-   
-console.log("from fixtures " +dep[i]);
+        // console.log(`from fixtures ${dep[i]}`);
 
-
-expect(option.text()).to.be.equal(dep[i]);
-
-
-
-    })
-})
-
-  })})
+        expect(option.text()).to.be.equal(dep[i]);
+      });
+    });
+  });
+});
